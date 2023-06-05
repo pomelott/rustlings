@@ -30,27 +30,21 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: Vec<(str, Command)>) -> Vec<str> {
+    // assert_eq!(output[0], "HELLO"); 这里的返回值为什么是 String ？
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: Vec<str> = vec![];
+        let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
-            match command {
-                Command::Uppercase => {
-                    string = string.to_uppercase();
-                },
-                Command::Trim => {
-                    string = string.trim();
-                },
-                Command::Append(num) => {
-                    let mut count = num;
-                    while count > &0 {
-                        string += "baz";
-                        count = &(count - 1);
-                    }
-                }
-            }
-            output.push(string);
+            // 这里的 s 是否接管了 是否接管了 string 的所有权 ？
+            let s = match command {
+                Command::Uppercase => string.to_uppercase(),
+                // 这里为什么要使用 into()
+                Command::Trim => string.trim().into(),
+                // 这里的 num 为什么需要解引用 ？ 为什么要使用 to_owned()
+                Command::Append(num) => string.to_owned() + &("bar".repeat(*num))
+            };
+            output.push(s);
         }
         output
     }
