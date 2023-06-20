@@ -1,5 +1,10 @@
 <div class="oranda-hide">
 
+## TODOS
+
+* hashmap2、hashmap3
+* error5, error6
+    https://www.bilibili.com/video/BV1Hk4y1x7aU/?spm_id_from=333.788&vd_source=78ae164e176c4747c8b2d858ddae3d4f
 # rustlings 🦀❤️
 
 </div>
